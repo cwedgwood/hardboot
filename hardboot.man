@@ -1,0 +1,40 @@
+.TH HARDBOOT 8 "March 2018" "Chris Wedgwood" "Silly Hacks: Hardboot"
+.SH NAME
+hardboot \- Cause the host system to
+.B cold
+boot
+.SH SYNOPSIS
+hardboot
+.B NOW
+.SH DESCRIPTION
+.B hardboot
+can be used to reboot a system without flushing and buffers.  It uses
+the keyboard controller to pulse the reset line low.
+
+You must pass a single argument of
+.B NOW
+typed in uppercase or no action will be performed.  This hopefully
+ensures people will not accidentally reset their machines.
+.SH RETURN VALUE
+Under normal circumstances hardboot will
+.B NOT
+return.  If however, there is a failure for some reason (such as being
+run without sufficient privileges or an argument it will print and
+error (to stderr) and return 1.
+.SH NOTES
+You should only run this if you fully understand the implications of
+the reboot.  It will not flush buffers (by design), it therefore will
+not unmount any filesystem(s) and as such they will be dirty and in
+need of either journal replay or fsck when the system comes back on
+line.
+.SH BUGS
+Only works for x86 systems.
+.SH SEE ALSO
+.BR sync (2),
+.BR reboot (2),
+.BR ctrlaltdel (8),
+.BR halt (8),
+.BR reboot (8)
+.SH AUTHOR
+.B hardboot
+was written by Chris Wedgwood, cw@f00f.org
