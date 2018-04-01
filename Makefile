@@ -27,7 +27,7 @@ uninstall:
 clean:
 	rm -f *~ *.o hardboot
 
-container: stripped
+container:
 	sudo docker build -t hardboot .
 	sudo docker images | grep hardboot
 
