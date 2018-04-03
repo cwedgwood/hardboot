@@ -1,6 +1,6 @@
 # use bldr (has musl-gcc) to build
 
-FROM cwedgwood/bldr
+FROM cwedgwood/bldr:0.01
 
 RUN mkdir -p /build/
 WORKDIR /build/
