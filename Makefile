@@ -21,7 +21,7 @@ clean:
 	rm -f *~ *.o hardboot
 
 container:
-	docker build -t hardboot . | cat
+	docker build -t hardboot .
 	docker images hardboot
 
 .PHONY: default install uninstall clean container
